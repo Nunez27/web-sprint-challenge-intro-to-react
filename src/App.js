@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Character from './components/Character';
 import './App.css';
 
 const App = () => {
   const {characterList, setCharacterList} = useState('')
   useEffect(() => {
-    axios.get('')
+    axios.get('https://swapi.dev/api/people/')
     .then(res => {
-      console.log(res)
+      setCharacterList(res.data)
     })
     .catch(err => {
       return(err)
