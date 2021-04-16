@@ -1,16 +1,20 @@
 // Write your Character component here
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
 
 const Character = ({character}) => {
-    const [individualCharacter, setIndividualCharacter] = useState([])
 
-    setIndividualCharacter(individualCharacter.map(()=> {
+    const {list, setList} = useState()
+ 
+    setList(list.map(()=> {
         return (
-            <Character character={character} key={character.id}/>
+            <div>
+                <Character character={character} key={character.name}/>    
+            </div>     
         )
     }))
+    console.log(Character);
 }
 
 export default Character;

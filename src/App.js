@@ -2,13 +2,17 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Character from './components/Character';
 import './App.css';
+// import { set } from 'msw/lib/types/context';
+
 
 const App = () => {
-  const {characterList, setCharacterList} = useState('')
+  const {characterList, setCharacterList} = useState([])
+  
   useEffect(() => {
-    axios.get('https://swapi.dev/api/people/')
+    axios
+    .get('https://swapi.dev/api/people/')
     .then(res => {
-      setCharacterList(res.data)
+      setCharacterList(res.data);
     })
     .catch(err => {
       return(err)
@@ -16,7 +20,8 @@ const App = () => {
   }, [])
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <h1 className="Header">Star Wars Characters</h1>
+      <Character character={characterList}/>
     </div>
   );
 }
